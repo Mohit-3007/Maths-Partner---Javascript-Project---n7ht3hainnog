@@ -2,11 +2,150 @@
 <html lang="en">
   <head>
     <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@300;400;500;600;700&family=Oxygen:wght@300;400;700&family=Poppins:ital,wght@0,200;0,300;0,500;0,700;1,300&family=Roboto:wght@300;400;500&family=Ubuntu:wght@300;400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
-    <div class="main"></div>
+    
+    <div class="header">
+      <div class="header-container">
+        <div class="header-left">
+          <h2>
+            <span class="logo-img">
+              <img src="#" alt="/">
+            </span>
+            <span class="logo-heading">Math Partner</span>
+          </h2>
+        </div>
 
+        <div class="header-right">
+          <ul class="header-list">
+            <li>All Calculators</li>
+            <li>Practice</li>
+            <li>Lessons</li>
+            <li>Pricing</li>
+            <li>Log in</li>
+          </ul>
+          <span><button class="sign-btn">Sign Up</button></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="main">
+      <div class="main-one">
+        <h1>Equation Solver</h1>
+        <button id="savedSol">Saved Solutions</button>
+      </div>
+
+      <div class="main-two">
+        <div class="input">
+          <form action="#">
+            <label for="inputArea">Problem</label>
+            <br>
+            <input id="inputArea" type="text" placeholder="TYPE HERE . . . . . . . . "/>
+          </form>
+        </div>
+
+        <div class="category">
+          <form action="#">
+            <label for="category-list">Select Category</label>
+            <br>
+            <select name="category-list" id="category-list">
+              <option value="simplify">Simplify</option>
+              <option value="factor">Factor</option>
+              <option value="derive">Derive</option>
+              <option value="integrate">Integrate</option>
+              <option value="zeroes">Find 0's</option>
+              <option value="tangent">Find Tangent</option>
+              <option value="area">Area Under Curve</option>
+              <option value="cos">Cosine</option>
+              <option value="sin">Sine</option>
+              <option value="tan">Tangent</option>
+              <option value="arccos">Inverse Cosine</option>
+              <option value="arcsin">Inverse Sine</option>
+              <option value="arctan">Inverse Tangent</option>
+              <option value="abs">Absolute Value</option>
+              <option value="log">Logarithm</option>
+            </select>
+          </form>
+        </div>
+        <button id="searchBtn"><i class="fa-solid fa-magnifying-glass fa-fade fa-2xl"></i></button>
+      </div>
+    </div> 
+
+    <div class="solContainer hidden">
+      <div class="sol-Window">
+        <h1>Saved Solution</h1>
+        <button id="problemBtn">Back to Problem Search</button>   
+      </div>
+      <!-- <div class="card-container">
+        <div class="card">
+          <p class="para p1">simplifysimplifysimplifysimplifysimplifysimplifysimplify </p>
+          <p class="para p2">2 + 2</p>
+          <p class="para p2">4</p>
+        </div>
+        <div class="card">
+          <p class="para p1">simplify</p>
+          <p class="para p2">2 + 2</p>
+          <p class="para p2">4</p>
+        </div>
+        <div class="card">
+          <p class="para p1">simplify</p>
+          <p class="para p2">2 + 2</p>
+          <p class="para p2">4</p>
+        </div>
+        <div class="card">
+          <p class="para p1">simplify</p>
+          <p class="para p2">2 + 2</p>
+          <p class="para p2">4</p>
+        </div>
+         <div class="card">
+          <p class="para p1">simplify</p>
+          <p class="para p2">2 + 2</p>
+          <p class="para p2">4</p>
+        </div>
+         <div class="card">
+          <p class="para p1">simplify</p>
+          <p class="para p2">2 + 2</p>
+          <p class="para p2">4</p>
+        </div>
+         <div class="card">
+          <p class="para p1">simplify</p>
+          <p class="para p2">2 + 2</p>
+          <p class="para p2">4</p>
+        </div>
+         <div class="card">
+          <p class="para p1">simplify</p>
+          <p class="para p2">2 + 2</p>
+          <p class="para p2">4</p>
+        </div>
+         <div class="card">
+          <p class="para p1">simplify</p>
+          <p class="para p2">2 + 2</p>
+          <p class="para p2">4</p>
+        </div>
+         <div class="card">
+          <p class="para p1">simplify</p>
+          <p class="para p2">2 + 2</p>
+          <p class="para p2">4</p>
+        </div>
+         <div class="card">
+          <p class="para p1">simplify</p>
+          <p class="para p2">2 + 2</p>
+          <p class="para p2">4</p>
+        </div>
+
+         <div class="card">
+          <p class="para p1">simplify</p>
+          <p class="para p2">2 + 2</p>
+          <p class="para p2">4</p>
+        </div>
+      </div> -->
+    </div>
+
+    <script src="https://kit.fontawesome.com/b145b6e087.js" crossorigin="anonymous"></script>
     <script src="./App.js"></script>
   </body>
 </html>
