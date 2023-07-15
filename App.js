@@ -1,4 +1,3 @@
-
 let inputArea = document.getElementById("inputArea");
 const operation = document.getElementById("category-list");
 const searchBtn = document.getElementById("searchBtn");
@@ -10,52 +9,31 @@ const cardContainer = document.createElement("div");
 const form = document.getElementById("myForm");
 
 
-// form.addEventListener("submit", (e) => {
-//   e.preventDefault();
-// }) 
-/* <p class="para p1">${edata.expression}</p> */
-
 problemBtn.addEventListener("click", () => {
   solContainer.classList.add("hidden");
   main.classList.remove("hidden");
 });
 
-function startProgram(){
-  if(inputArea.addEventListener("keydown", (e) => {
-     if (e.key === "Enter") {
-       console.log(e);
-       e.preventDefault()
-       encodeInput();
-     }
-   })){}
+inputArea.addEventListener("keydown", (e) => {
+  if (e.key === "Enter") {
+    console.log(e);
+    e.preventDefault();
+    encodeInput();
+  }
+});
 
-   
-}
-
-// inputArea.addEventListener("keydown", (e) => {
-//  // console.log(e);
-//   if (e.key === "Enter") {
-//     console.log(e);
-//     e.preventDefault()
-//     encodeInput();
-//   }
-// });
-
-// searchBtn.addEventListener("click", (e) => {
-//   e.preventDefault();
-//   console.log(e);
-//   encodeInput();
-// })
+searchBtn.addEventListener("click", (e) => {
+  e.preventDefault()
+  encodeInput();
+});
 
 function encodeInput() {
-  if (inputArea.value == "") {
+  if (inputArea.value === "") {
     console.log("empty string");
-    // return;
   } else {
     let expression = encodeURIComponent(inputArea.value);
     console.log(expression);
     getData(expression, operation.value);
-    
   }
 }
 
@@ -76,10 +54,11 @@ async function getData(exp, op) {
         <button id="deleteBtn"><i class="fa-solid fa-trash-can fa-2xl" style="color: #080808;"></i></button>
       </div> 
   `;
-  
+
   main.innerHTML += htmlCOntent;
   saveData(data);
-
+  let deleteBtn = document.getElementById("deleteBtn");
+  callDeleteLocal();
 }
 
 function saveData(data) {
@@ -97,28 +76,38 @@ function saveData(data) {
   }
 }
 
-document.addEventListener('click', function(event) {
-  if (event.target.matches('#savedSol')) {
+function callDeleteLocal(){
+
+  deleteBtn.addEventListener("click", function () {
+    console.log("deleteLocal function is called");
+    let array = JSON.parse(localStorage.getItem("localData"));
+    array.splice(-1, 1);
+    window.localStorage.setItem("localData", JSON.stringify(array));
+
+  });
+}
+
+document.addEventListener("click", function (event) {
+  if (event.target.matches("#savedSol")) {
     savedSolution();
   }
 });
 
-document.addEventListener('click', function(event) {
-  if (event.target.matches('#deleteCard')) {
+document.addEventListener("click", function (event) {
+  if (event.target.matches("#deleteCard")) {
     cardDelete(event.target.getAttribute("value"));
   }
 });
 
 const deleteCard = document.getElementById("deleteCard");
 
-function cardDelete(event){
+function cardDelete(event) {
   console.log(event);
   let array = JSON.parse(localStorage.getItem("localData"));
   array.splice(event, 1);
   window.localStorage.setItem("localData", JSON.stringify(array));
 
   savedSolution();
-
 }
 
 function savedSolution() {
@@ -148,9 +137,4 @@ function savedSolution() {
 
     solContainer.appendChild(cardContainer);
   }
-
 }
-
-// savedSol.onclick = savedSolution;nextElementSibling
-
-startProgram();

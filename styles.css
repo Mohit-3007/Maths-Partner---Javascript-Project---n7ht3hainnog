@@ -249,15 +249,17 @@ body{
 
 .card-container{
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));;
+    grid-template-columns: repeat(auto-fill, 300px);
     grid-gap: 20px;
     padding: 10px 10px;
+    padding: 0 auto;
     
 }
 
 .card{
     font-size: 14px;
     height: 280px;
+    /* max-width: 300px; */
     padding: 0 10px;
     padding-top: 10px;
     padding-bottom: 30px;
