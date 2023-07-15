@@ -7,34 +7,12 @@ const main = document.querySelector(".main");
 const solContainer = document.querySelector(".solContainer");
 const problemBtn = document.getElementById("problemBtn");
 const cardContainer = document.createElement("div");
+const form = document.getElementById("myForm");
 
-savedSol.onclick = savedSolution;
-function savedSolution() {
-  main.classList.add("hidden");
-  solContainer.classList.remove("hidden");
-  cardContainer.innerHTML = "";
-  cardContainer.classList.add("card-container");
 
-  const storaaa = JSON.parse(window.localStorage.getItem("localData"));
-  console.log(storaaa);
-  if (storaaa == null || storaaa == "undefined") {
-    console.log("No Data To Render");
-    return;
-  } else {
-    storaaa.forEach((e) => {
-      const cardHtml = `
-        <div class="card">
-          <p class="para p2">${e.operation}</p>
-          <p class="para p2">${e.result}</p>
-        </div>
-      `;
-      cardContainer.innerHTML += cardHtml;
-    });
-
-    solContainer.appendChild(cardContainer);
-  }
-}
-
+// form.addEventListener("submit", (e) => {
+//   e.preventDefault();
+// }) 
 /* <p class="para p1">${edata.expression}</p> */
 
 problemBtn.addEventListener("click", () => {
@@ -42,14 +20,32 @@ problemBtn.addEventListener("click", () => {
   main.classList.remove("hidden");
 });
 
-inputArea.addEventListener("keydown", (e) => {
-  console.log(e);
-  if (e.key === "Enter") {
-    encodeInput();
-  }
-});
+function startProgram(){
+  if(inputArea.addEventListener("keydown", (e) => {
+     if (e.key === "Enter") {
+       console.log(e);
+       e.preventDefault()
+       encodeInput();
+     }
+   })){}
 
-searchBtn.onclick = encodeInput;
+   
+}
+
+// inputArea.addEventListener("keydown", (e) => {
+//  // console.log(e);
+//   if (e.key === "Enter") {
+//     console.log(e);
+//     e.preventDefault()
+//     encodeInput();
+//   }
+// });
+
+// searchBtn.addEventListener("click", (e) => {
+//   e.preventDefault();
+//   console.log(e);
+//   encodeInput();
+// })
 
 function encodeInput() {
   if (inputArea.value == "") {
@@ -59,6 +55,7 @@ function encodeInput() {
     let expression = encodeURIComponent(inputArea.value);
     console.log(expression);
     getData(expression, operation.value);
+    
   }
 }
 
@@ -66,6 +63,7 @@ async function getData(exp, op) {
   const resp = await fetch(`https://newton.vercel.app/api/v2/${op}/${exp}`);
   const data = await resp.json();
   console.log(data);
+  const main = document.querySelector(".main");
   const htmlCOntent = `
     <div class="main-three">
       <div class="problem">
@@ -78,14 +76,10 @@ async function getData(exp, op) {
         <button id="deleteBtn"><i class="fa-solid fa-trash-can fa-2xl" style="color: #080808;"></i></button>
       </div> 
   `;
-  const main = document.querySelector(".main");
+  
   main.innerHTML += htmlCOntent;
-
-  savedSol.onclick = savedSolution;
-
   saveData(data);
-  // inputArea.innerText += data.expression;
-  // console.log(inputArea);
+
 }
 
 function saveData(data) {
@@ -102,3 +96,61 @@ function saveData(data) {
     localStorage.setItem("localData", JSON.stringify(array));
   }
 }
+
+document.addEventListener('click', function(event) {
+  if (event.target.matches('#savedSol')) {
+    savedSolution();
+  }
+});
+
+document.addEventListener('click', function(event) {
+  if (event.target.matches('#deleteCard')) {
+    cardDelete(event.target.getAttribute("value"));
+  }
+});
+
+const deleteCard = document.getElementById("deleteCard");
+
+function cardDelete(event){
+  console.log(event);
+  let array = JSON.parse(localStorage.getItem("localData"));
+  array.splice(event, 1);
+  window.localStorage.setItem("localData", JSON.stringify(array));
+
+  savedSolution();
+
+}
+
+function savedSolution() {
+  console.log("button clicked");
+  main.classList.add("hidden");
+  solContainer.classList.remove("hidden");
+  cardContainer.innerHTML = "";
+  cardContainer.classList.add("card-container");
+
+  const storaaa = JSON.parse(window.localStorage.getItem("localData"));
+  console.log(storaaa);
+  if (storaaa == null || storaaa == "undefined") {
+    console.log("No Data To Render");
+    return;
+  } else {
+    storaaa.forEach((e, idx) => {
+      const cardHtml = `
+        <div class="card">
+          <button id="deleteCard" value=${idx}>X</button>
+          <p class="para p1">${e.operation}</p>
+          <textarea id="textArea" disabled>${e.expression}</textarea>
+          <p class="para p2">${e.result}</p>
+        </div>
+      `;
+      cardContainer.innerHTML += cardHtml;
+    });
+
+    solContainer.appendChild(cardContainer);
+  }
+
+}
+
+// savedSol.onclick = savedSolution;nextElementSibling
+
+startProgram();

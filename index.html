@@ -40,40 +40,40 @@
       </div>
 
       <div class="main-two">
-        <div class="input">
-          <form action="#">
-            <label for="inputArea">Problem</label>
-            <br>
-            <input id="inputArea" type="text" placeholder="TYPE HERE . . . . . . . . "/>
-          </form>
-        </div>
+        <form id="myForm">
+          <div class="input" style="display: inline-block;">
+              <label for="inputArea">Problem</label>
+              <br>
+              <input id="inputArea" type="text" placeholder="TYPE HERE . . . . . . . . "/>
+          </div>
 
-        <div class="category">
-          <form action="#">
-            <label for="category-list">Select Category</label>
-            <br>
-            <select name="category-list" id="category-list">
-              <option value="simplify">Simplify</option>
-              <option value="factor">Factor</option>
-              <option value="derive">Derive</option>
-              <option value="integrate">Integrate</option>
-              <option value="zeroes">Find 0's</option>
-              <option value="tangent">Find Tangent</option>
-              <option value="area">Area Under Curve</option>
-              <option value="cos">Cosine</option>
-              <option value="sin">Sine</option>
-              <option value="tan">Tangent</option>
-              <option value="arccos">Inverse Cosine</option>
-              <option value="arcsin">Inverse Sine</option>
-              <option value="arctan">Inverse Tangent</option>
-              <option value="abs">Absolute Value</option>
-              <option value="log">Logarithm</option>
-            </select>
-          </form>
-        </div>
-        <button id="searchBtn"><i class="fa-solid fa-magnifying-glass fa-fade fa-2xl"></i></button>
+          <div class="category" style="display: inline-block;">
+              <label for="category-list">Select Category</label>
+              <br>
+              <select name="category-list" id="category-list">
+                <option value="simplify">Simplify</option>
+                <option value="factor">Factor</option>
+                <option value="derive">Derive</option>
+                <option value="integrate">Integrate</option>
+                <option value="zeroes">Find 0's</option>
+                <option value="tangent">Find Tangent</option>
+                <option value="area">Area Under Curve</option>
+                <option value="cos">Cosine</option>
+                <option value="sin">Sine</option>
+                <option value="tan">Tangent</option>
+                <option value="arccos">Inverse Cosine</option>
+                <option value="arcsin">Inverse Sine</option>
+                <option value="arctan">Inverse Tangent</option>
+                <option value="abs">Absolute Value</option>
+                <option value="log">Logarithm</option>
+              </select>
+          </div>
+
+          <button id="searchBtn" type="submit"><i class="fa-solid fa-magnifying-glass fa-fade fa-2xl"></i></button>
+       </form>
       </div>
     </div> 
+    
 
     <div class="solContainer hidden">
       <div class="sol-Window">

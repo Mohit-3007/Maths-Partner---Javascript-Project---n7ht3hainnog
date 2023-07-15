@@ -99,20 +99,27 @@ body{
 }
 
 .main-two{
-    display: flex;
+    /* display: flex; */
     margin: 0 180px;
-    gap: 10px;
+    /* gap: 10px; */
     margin-bottom: 25px;
 
 }
 
-form > label{
+/* 1 */
+.input > label{   
     font-family: 'Roboto', sans-serif;
     font-size: 25px;
     font-weight: 800; 
 }
 
-form > input[type="text"]{
+.category > label{   
+    font-family: 'Roboto', sans-serif;
+    font-size: 25px;
+    font-weight: 800; 
+}
+
+.input > input[type="text"]{
     height: 60px;
     width: 270px;
     border-radius: 25px;
@@ -133,7 +140,7 @@ form > input[type="text"]{
     font-weight: 600;
 }
 
-form > select{
+.category > select{
     height: 60px;
     width: 210px;
     border-radius: 25px;
@@ -148,11 +155,11 @@ form > select{
     letter-spacing: 1.30px;
 }
 
-form > label[for="inputArea"]{
+.input > label[for="inputArea"]{
     margin-left: 30px;
 }
 
-form > label[for="category-list"]{
+.category > label[for="category-list"]{
     margin-left: 15px;
 }
 
@@ -236,25 +243,24 @@ form > label[for="category-list"]{
     border-radius: 10px;
     border: 2px solid #333333;
     background-color: #333333;
-    color: white;
+    color: whitesmoke;
     cursor: pointer;
 }
 
 .card-container{
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    gap: 10px;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));;
+    grid-gap: 20px;
     padding: 10px 10px;
     
 }
 
 .card{
-    color: white;
-    background-color: #333333;
     font-size: 14px;
-    height: 250px;
-    width: 300px;
-    padding: 20px 10px;
+    height: 280px;
+    padding: 0 10px;
+    padding-top: 10px;
+    padding-bottom: 30px;
     margin: 0 15px;
     border-radius: 20px;
     text-align: center;
@@ -264,4 +270,92 @@ form > label[for="category-list"]{
     font-size: 20px;
     word-wrap: break-word;
     margin-bottom: 30px;
+}
+
+.card:nth-of-type(even){
+    background-color: rgba(179, 176, 176, 0.945);
+    color: #333333;
+    box-shadow: 5px 5px 8px 5px #333333;
+}
+
+.card:nth-of-type(even) textarea{
+    background-color: rgba(179, 176, 176, 0.945);
+    color: #333333;
+    background: none;
+}
+
+.card:nth-of-type(even) .p2{
+    background-color: #333333;
+    color: rgba(179, 176, 176, 0.945);
+}
+
+.card:nth-of-type(even) button{
+    background-color: #333333;
+    color: rgba(179, 176, 176, 0.945);
+}
+
+.card:nth-of-type(odd){
+    background-color: #333333;
+    color: whitesmoke;
+    box-shadow: 5px 5px 8px 5px rgba(179, 176, 176, 0.945);
+}
+
+.card:nth-of-type(odd) textarea{
+    background-color: #333333;
+    color: whitesmoke;
+    background: none;
+}
+
+.card:nth-of-type(odd) .p2{
+    background-color: rgba(179, 176, 176, 0.945);
+    color: #333333;
+}
+
+.card:nth-of-type(odd) button{
+    background-color: rgba(179, 176, 176, 0.945);
+    color: #333333;
+}
+
+#deleteCard{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    width: 40px;
+    margin-right: 5px;
+    font-family: 'Oxygen', sans-serif;
+    font-size: 25px;
+    font-weight: bold;
+    border-radius: 20px;
+    cursor: pointer;
+    align-self: flex-end;
+    margin-bottom: none;
+    border: none;
+    outline: none;
+}
+
+#textArea{
+    outline: none;
+    border: none;
+    resize: none;
+    text-align: center;
+    font-size: 35px;
+    margin-top: 35px;
+}
+
+.p1{
+    font-size: 35px;
+    font-weight: 500;
+    letter-spacing: 0.7px;
+    margin-top: none;
+    
+}
+
+.p2{
+    font-size: 40px;
+    font-weight: bold;
+    max-width: 90%;
+    margin: 0 auto;
+    padding: 2px 10px;
+    border-radius: 20px;
 }
